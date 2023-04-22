@@ -1,0 +1,138 @@
+.App {
+    text-align: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    font-family: "Handlee", cursive;
+}
+
+.badge {
+    animation: blur 1s ease-out;
+    text-shadow: 0px 0px 1px #000000, 0px 0px 2px #000000;
+    margin-inline: 2px;
+    border: 1px solid #0e0e0e;
+    font-size: 90%;
+}
+
+.card-detail {
+    max-width: 500px;
+}
+
+.card {
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.badge-bug {
+    background-color: #006417;
+    color: #fff;
+}
+
+.badge-water {
+    background-color: #06a6d6;
+    color: #fff;
+}
+
+.badge-normal {
+    background-color: #8d8d8d;
+    color: #fff;
+}
+
+.badge-fire {
+    background-color: #e21414;
+    color: #fff;
+}
+
+.badge-grass {
+    background-color: #78c850;
+    color: #ffffff;
+}
+
+.badge-electric {
+    background-color: #ddb92a;
+    color: #ffffff;
+}
+
+.badge-ice {
+    background-color: #98d8d8;
+    color: #ffffff;
+}
+
+.badge-fighting {
+    background-color: #740600;
+    color: #ffffff;
+}
+
+.badge-poison {
+    background-color: #aa37aa;
+    color: #ffffff;
+}
+
+.badge-ground {
+    background-color: #a58e4e;
+    color: #ffffff;
+}
+
+.badge-flying {
+    background-color: #a590f0;
+    color: #ffffff;
+}
+
+.badge-psychic {
+    background-color: #f358f8;
+    color: #ffffff;
+}
+
+.badge-rock {
+    background-color: #494946;
+    color: #ffffff;
+}
+
+.badge-ghost {
+    background-color: #705898;
+    color: #ffffff;
+}
+
+.badge-dark {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+.badge-dragon {
+    background-color: #090085;
+    color: #ffffff;
+}
+
+.badge-steel {
+    background-color: #b8b8d0;
+    color: #ffffff;
+}
+
+.badge-fairy {
+    background-color: #e0889b;
+    color: #ffffff;
+}
+
+footer {
+    align-self: flex-end;
+    text-align: center;
+    color: ghostwhite;
+    background-color: black;
+    font-size: 16px;
+    font-family: "Handlee", cursive;
+    width: 100%;
+    padding: 6px 0px 0px 0px;
+}
