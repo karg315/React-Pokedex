@@ -6,3 +6,5 @@
 #### Kevin Rodriguez
 
 #### Comentarios extras: Luego de conocer de añadir lo de firebase se me salió de las manos no repetir el código, intenté mucho pero fallaba una o dos cosas, como los props y demás, fui añadiendo código para que se viera muy bien las vistas pero pues sin documentar, y un bug sin resolver que en favoritos no muestra la imagen de los pokemones con id mayor a 20, lo que en la lista si hace...
+
+##### Ahora con 24 horas para solucionar bugs me va dar más vainas que al código en sí
