@@ -6,6 +6,7 @@ function PokemonPost() {
     const [pokemon, setPokemon] = useState(null);
     const navigate = useNavigate();
 
+    /* Obtener información de cada pokemon */
     useEffect(() => {
         async function fetchPokemon() {
             try {
@@ -18,17 +19,18 @@ function PokemonPost() {
                 navigate("/*");
             }
         }
-
         fetchPokemon();
     }, [id]);
 
+    /* Si se demora en cargar muestra este mensaje de loading */
     if (!pokemon) {
         return <div>Loading...</div>;
     }
 
+    /* Dar clase y estilo a las etiquetas de las clases que tenga cada pokemon */
     const getTypeClass = (type) => {
         switch (type) {
-            case "normal" :
+            case "normal":
                 return "badge badge-normal";
             case "grass":
                 return "badge badge-grass";
@@ -36,41 +38,43 @@ function PokemonPost() {
                 return "badge badge-fire";
             case "water":
                 return "badge badge-water";
-            case "bug" :
+            case "bug":
                 return "badge badge-bug";
-            case "poison" :
+            case "poison":
                 return "badge badge-poison";
-            case "ghost" :
+            case "ghost":
                 return "badge badge-ghost";
-            case "rock" :
+            case "rock":
                 return "badge badge-rock";
-            case "ground" :
+            case "ground":
                 return "badge badge-ground";
-            case "electric" :
+            case "electric":
                 return "badge badge-electric";
-            case "psychic" :
+            case "psychic":
                 return "badge badge-psychic";
-            case "ice" :
+            case "ice":
                 return "badge badge-ice";
-            case "dragon" :
+            case "dragon":
                 return "badge badge-dragon";
-            case "dark" :
-                return "badge badge-dark";            
-            case "fairy" :
+            case "dark":
+                return "badge badge-dark";
+            case "fairy":
                 return "badge badge-fairy";
-            case "fighting" :
+            case "fighting":
                 return "badge badge-fighting";
-            case "flying" :
+            case "flying":
                 return "badge badge-flying";
-            case "steel" :
+            case "steel":
                 return "badge badge-steel";
             default:
                 return "badge bg-secondary";
         }
     };
 
+    /* Html de la vista de la información de un pokemon en especifico */
     return (
-        <> <h1 className="text-center my-4">Detalles de Pokemon</h1>
+        <>
+            <h1 className="text-center my-4">Detalles de Pokemon</h1>
             <div className="container">
                 <div className="card card-detail my-5 mx-auto">
                     <img
@@ -81,30 +85,14 @@ function PokemonPost() {
                     <div className="card-body">
                         <h2 className="card-title">{pokemon.name}</h2>
                         <p className="card-text">
-                            
-                            {pokemon.types.length === 1 ? (
+                            {pokemon.types.map((type, index) => (
                                 <span
-                                className={getTypeClass(pokemon.types[0].type.name)}
-                                key={1}
-                            >
-                                {pokemon.types[0].type.name}
-                            </span>
-                            ) : (
-                                <>
-                                <span
-                                    className={getTypeClass(pokemon.types[0].type.name)}
-                                    key={1}
+                                    className={getTypeClass(type.type.name)}
+                                    key={index}
                                 >
-                                    {pokemon.types[0].type.name}
+                                    {type.type.name}
                                 </span>
-                                <span
-                                    className={getTypeClass(pokemon.types[1].type.name)}
-                                    key={2}
-                                >
-                                    {pokemon.types[1].type.name}
-                                </span>
-                                </>
-                            )}
+                            ))}
                         </p>
                     </div>
                     <ul className="list-group list-group-flush">

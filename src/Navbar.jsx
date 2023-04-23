@@ -7,17 +7,19 @@ function Navbar({ handleSearch }) {
     const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate();
 
+    /* Manejar cambio en la barra de busqueda */
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
     };
 
+    /* Manejar en envío de la busqueda */
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleSearch(searchTerm);
         navigate("/pokemon/" + searchTerm);
         setSearchTerm("");
     };
 
+    /* Barra de navegación */
     return (
         <header>
             <nav
@@ -52,6 +54,11 @@ function Navbar({ handleSearch }) {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/favoritos">
                                         Favoritos
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/captured">
+                                        Capturados
                                     </Link>
                                 </li>
                             </ul>

@@ -10,11 +10,11 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
-export default function Favorites() {
+export default function Captured() {
     const [pokemonDetailsList, setPokemonDetailsList] = useState({});
-    const [favorites, setFavorites] = useState([]);
+    const [captured, setCaptured] = useState([]);
 
-    /* Traer detalles de cada Pokemon */
+    /* Traer detalles de cada pokemon */
     const fetchDetails = async (pokemonName) => {
         const response = await fetch(
             `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
@@ -30,14 +30,14 @@ export default function Favorites() {
         }));
     };
 
-    /* Actualzar al traer los detalles en la lista de favoritos */
+    /* Traer los detalles de cada pokemon en la lista de capturados */
     useEffect(() => {
-        favorites.forEach((pokemon) => {
+        captured.forEach((pokemon) => {
             fetchDetails(pokemon.name);
         });
-    }, [favorites]);
+    }, [captured]);
 
-    /* Dar clase y estilo a las eqtiquetas de cada pokemon */
+    /* Dar clase a la etiqueta de cada tipo de pokemon */
     const getTypeClass = (type) => {
         switch (type) {
             case "normal":
@@ -81,53 +81,52 @@ export default function Favorites() {
         }
     };
 
-    /* Traer la lista de favoritos y actualizar */
+    /* Obtener los capturados de firestore y actualizar */
     useEffect(() => {
-        async function fetchFavorites() {
-            const favoritesCollection = collection(db, "favorites");
-            const favoritesSnapshot = await getDocs(favoritesCollection);
-            const favoritesList = favoritesSnapshot.docs.map((doc) => ({
+        async function fetchCaptured() {
+            const capturedCollection = collection(db, "captured");
+            const capturedSnapshot = await getDocs(capturedCollection);
+            const capturedList = capturedSnapshot.docs.map((doc) => ({
                 id: doc.id,
                 name: doc.data().name,
             }));
-            setFavorites(favoritesList);
+            setCaptured(capturedList);
         }
-
-        fetchFavorites();
+        fetchCaptured();
     }, []);
 
-    /* Eliminar un pokemon favorito */
-    const removeFavorite = async (name) => {
-        const favoritesCollection = collection(db, "favorites");
-        const pokemonToRemove = favorites.find(
-            (favorite) => favorite.name === name
+    /* Remover pokemon capturado */
+    const removeCaptured = async (name) => {
+        const capturedCollection = collection(db, "captured");
+        const pokemonToRemove = captured.find(
+            (capture) => capture.name === name
         );
-        const docRef = doc(favoritesCollection, pokemonToRemove.id);
+        const docRef = doc(capturedCollection, pokemonToRemove.id);
         await deleteDoc(docRef);
         console.log(`Document with id ${pokemonToRemove.id} deleted`);
     };
 
-    /* Actualizar al eliminar un pokemon */
+    /* Actualizar al elmiinar un pokemon capturado */
     useEffect(() => {
         const unsubscribe = onSnapshot(
-            collection(db, "favorites"),
+            collection(db, "captured"),
             (snapshot) => {
-                const favoritesList = snapshot.docs.map((doc) => ({
+                const capturedList = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     name: doc.data().name,
                 }));
-                setFavorites(favoritesList);
+                setCaptured(capturedList);
             }
         );
         return () => unsubscribe();
     }, []);
 
-    /* Html de la vista de favoritos */
+    /* html de la vista de capturados */
     return (
-        <div className="favorites">
-            <h1 className="text-center my-5">Pokemones Favoritos</h1>
+        <div className="captured">
+            <h1 className="text-center my-5">Pokemones Capturados</h1>
             <div className="row pb-5">
-                {favorites.map((pokemon) => (
+                {captured.map((pokemon) => (
                     <div key={pokemon.name} className="col-sm-4 col-lg-3 mb-3">
                         <div className="card shadow">
                             {pokemonDetailsList[pokemon.name] && (
@@ -162,25 +161,23 @@ export default function Favorites() {
                                     >
                                         Detalles
                                     </Link>
-                                    <div data-toggle="tooltip" title="Remover de favoritos">
+                                    <div
+                                        data-toggle="tooltip"
+                                        title="Remover de capturados"
+                                    >
                                         <button
-                                            className="btn btn-warning border border-dark"
+                                            className="btn btn-danger border border-dark"
                                             onClick={() =>
-                                                removeFavorite(pokemon.name)
+                                                removeCaptured(pokemon.name)
                                             }
-                                            
                                         >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                id="Outline"
-                                                viewBox="0 0 24 24"
-                                                width="25"
-                                                height="25"
-                                            >
-                                                <path d="M23.836,8.794a3.179,3.179,0,0,0-3.067-2.226H16.4L15.073,2.432a3.227,3.227,0,0,0-6.146,0L7.6,6.568H3.231a3.227,3.227,0,0,0-1.9,5.832L4.887,15,3.535,19.187A3.178,3.178,0,0,0,4.719,22.8a3.177,3.177,0,0,0,3.8-.019L12,20.219l3.482,2.559a3.227,3.227,0,0,0,4.983-3.591L19.113,15l3.56-2.6A3.177,3.177,0,0,0,23.836,8.794Zm-2.343,1.991-4.144,3.029a1,1,0,0,0-.362,1.116L18.562,19.8a1.227,1.227,0,0,1-1.895,1.365l-4.075-3a1,1,0,0,0-1.184,0l-4.075,3a1.227,1.227,0,0,1-1.9-1.365L7.013,14.93a1,1,0,0,0-.362-1.116L2.507,10.785a1.227,1.227,0,0,1,.724-2.217h5.1a1,1,0,0,0,.952-.694l1.55-4.831a1.227,1.227,0,0,1,2.336,0l1.55,4.831a1,1,0,0,0,.952.694h5.1a1.227,1.227,0,0,1,.724,2.217Z" />
-                                            </svg>
-                                        </button></div>
-                                    
+                                            <img
+                                                width="24px"
+                                                height="24px"
+                                                src="https://img.icons8.com/color/48/000000/pokeball--v1.png"
+                                            />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

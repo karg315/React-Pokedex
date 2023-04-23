@@ -6,22 +6,18 @@ import PokemonPost from "./PokemonPost";
 import NoEncontrado from "./NoEncontrado";
 import './App.css'
 import Favorites from "./Favorites";
+import Captured from "./Captured";
 
 function App() {
-    const [searchTerm, setSearchTerm] = useState("");
-
-    const handleSearch = (term) => {
-        setSearchTerm(term);
-    };
-
     return (
         <div>
-            <BrowserRouter /* basename={basename} */>
-                <Navbar handleSearch={handleSearch} />
+            <BrowserRouter>
+                <Navbar/>
                 <div className="container">
                 <Routes>
                     <Route path="/" element={<PokemonList />} />
                     <Route path="/favoritos" element={<Favorites />} />
+                    <Route path="/captured" element={<Captured />} />
                     <Route path="/pokemon/:id" element={<PokemonPost />} />
                     <Route path="/*" element={<NoEncontrado/>} />
                 </Routes>
