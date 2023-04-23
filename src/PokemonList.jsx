@@ -167,9 +167,15 @@ function PokemonList() {
     /* Remover de firestore según el nombre de pokemon y su colección */
     const removeFromFireStore = async (name, coleccion) => {
         const favoritesCollection = collection(db, coleccion);
-        const pokemonToRemove = favorites.find(
-            (favorite) => favorite.name === name
-        );
+        if (coleccion == "favorites") {
+            var pokemonToRemove = favorites.find(
+                (favorite) => favorite.name === name
+            );
+        } else {
+            var pokemonToRemove = captured.find(
+                (capture) => capture.name === name
+            );
+        }      
         const docRef = doc(favoritesCollection, pokemonToRemove.id);
         await deleteDoc(docRef);
         console.log(`Document with id ${pokemonToRemove.id} deleted`);
