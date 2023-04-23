@@ -10,3 +10,5 @@
 #### *Y sobre los helpers en especial, me vi con poco tiempo si era implementar los otros detalles en este caso, favorito y capturado a cada pokemon en cada vista, lo que hizo que me centrara en eso y no en hacer modular los helpers y la tarjeta de cada pokemon
 
 #### **Sobre la tarjeta de pokemon era dificil hacerlo modular, los datos necesarios para renderizarla son distintos en cada vista, en las listas y detalle recorre una lista según el nombre de pokemon, pero en la lista en general toca traer los datos extras como la imagen y tipos del pokemon sobre el fetch de la lista de pokemones, algo que complicó la modularización, y por tanto reducir el código.
+
+##### Ultimas notas: Es muy interesante React, pero en especial en parcial todo fue cuesta arriba, pues tocaba reutilizar todo, pero apenas si se logró con copy paste dentro de los componentes, el diseño y todo si se fue de sabático, las funciones están pero ajá. Igual, me siento orgulloso de que todo funcione bien cuando al inicio del curso sabía dos cosas de Javascript.
