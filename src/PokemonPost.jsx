@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
     collection,
@@ -9,13 +9,13 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { PokemonContext } from "./PokemonContext";
 
 function PokemonPost() {
     const { id } = useParams();
     const [pokemon, setPokemon] = useState(null);
     const navigate = useNavigate();
-    const [captured, setCaptured] = useState([]);
-    const [favorites, setFavorites] = useState([]);
+    const { favorites, setFavorites, captured, setCaptured } = useContext(PokemonContext);
 
     /* Obtener información de cada pokemon */
     useEffect(() => {

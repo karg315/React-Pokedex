@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./navbar.css";
+import LoginButton from "./components/LoginButton";
 
 function Navbar({ handleSearch }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -47,8 +48,13 @@ function Navbar({ handleSearch }) {
                         >
                             <ul className="navbar-nav mb-1">
                                 <li className="nav-item">
+                                    <Link className="nav-link" to="/dashboard">
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
                                     <Link className="nav-link" to="/">
-                                        Todos los Pokemones
+                                        Lista
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -59,6 +65,11 @@ function Navbar({ handleSearch }) {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/captured">
                                         Capturados
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/subidos">
+                                        Subidos
                                     </Link>
                                 </li>
                             </ul>
@@ -84,8 +95,11 @@ function Navbar({ handleSearch }) {
                                 </button>
                             </form>
                         </div>
+                        <div className="mx-auto pl-5">
+                        <LoginButton /> </div>
                     </div>
             </nav>
+            
         </header>
     );
 }

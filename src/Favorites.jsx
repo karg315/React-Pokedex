@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
     collection,
@@ -9,10 +9,11 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { PokemonContext } from "./PokemonContext";
 
 export default function Favorites() {
     const [pokemonDetailsList, setPokemonDetailsList] = useState({});
-    const [favorites, setFavorites] = useState([]);
+    const { favorites, setFavorites, captured, setCaptured } = useContext(PokemonContext);
 
     /* Traer detalles de cada Pokemon */
     const fetchDetails = async (pokemonName) => {
@@ -30,14 +31,14 @@ export default function Favorites() {
         }));
     };
 
-    /* Actualzar al traer los detalles en la lista de favoritos */
+    /* Actualizar al traer los detalles en la lista de favoritos */
     useEffect(() => {
         favorites.forEach((pokemon) => {
             fetchDetails(pokemon.name);
         });
     }, [favorites]);
 
-    /* Dar clase y estilo a las eqtiquetas de cada pokemon */
+    /* Dar clase y estilo a las etiquetas de cada pokemon */
     const getTypeClass = (type) => {
         switch (type) {
             case "normal":

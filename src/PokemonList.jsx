@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
     collection,
@@ -9,14 +9,14 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { PokemonContext } from "./PokemonContext";
 
 function PokemonList() {
     const [pokemonList, setPokemonList] = useState([]);
     const [nextUrl, setNextUrl] = useState("");
     const [prevUrl, setPrevUrl] = useState("");
     const [pokemonDetailsList, setPokemonDetailsList] = useState({});
-    const [favorites, setFavorites] = useState([]);
-    const [captured, setCaptured] = useState([]);
+    const { favorites, setFavorites, captured, setCaptured } = useContext(PokemonContext);
 
     /* Obtener la lista de pokemones, por API solo permite 20 a la vez con petición normal */
     useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import {
     collection,
@@ -9,10 +9,11 @@ import {
     onSnapshot,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { PokemonContext } from "./PokemonContext";
 
 export default function Captured() {
     const [pokemonDetailsList, setPokemonDetailsList] = useState({});
-    const [captured, setCaptured] = useState([]);
+    const { favorites, setFavorites, captured, setCaptured } = useContext(PokemonContext);
 
     /* Traer detalles de cada pokemon */
     const fetchDetails = async (pokemonName) => {
