@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     collection,
     addDoc,
@@ -85,6 +85,8 @@ function Subidos() {
     return (
         <>
             <div>
+                <h1 className="text-center my-4">Subidos</h1>
+
                 {pokemonesSubidos.map((pokemon) => (
                     <div className="card card-detail my-5 mx-auto">
                         <img
@@ -139,6 +141,13 @@ function Subidos() {
                     </div>
                 ))}
             </div>
+            
+            <Link
+                to={`/subir`}
+                className="btn btn-primary text-align-center mb-4"
+            >
+                Subir nuevo pokemon
+            </Link>
         </>
     );
 }

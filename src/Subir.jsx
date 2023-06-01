@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 export default function Subir() {
     const [checkboxValues, setCheckboxValues] = useState([]);
     const [Name, setName] = useState("");
     const [URL, setURL] = useState("");
+    const navigate = useNavigate();
 
     const addtoFireStore = async () => {
         try {
@@ -51,7 +53,7 @@ export default function Subir() {
         event.preventDefault();
 
         if (!Name || !URL) {
-            alert('Por favor, ingresa todos los campos');
+            alert("Por favor, ingresa todos los campos");
             return;
         }
 
@@ -64,7 +66,7 @@ export default function Subir() {
 
     return (
         <div>
-            <h1>Subir</h1>
+            <h1 className="text-center my-4">Subir</h1>
             <form onSubmit={handleFormSubmit}>
                 <label className="fs-5">
                     Nombre:
@@ -97,7 +99,10 @@ export default function Subir() {
                         value="normal"
                         checked={checkboxValues.includes("normal")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('normal')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("normal")
+                        }
                         className="form-check-input mt-1 fs-5"
                     />
                     Normal
@@ -110,7 +115,10 @@ export default function Subir() {
                         value="grass"
                         checked={checkboxValues.includes("grass")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('grass')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("grass")
+                        }
                         className="form-check-input mt-1"
                     />
                     Grass
@@ -123,7 +131,10 @@ export default function Subir() {
                         value="fire"
                         checked={checkboxValues.includes("fire")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('fire')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("fire")
+                        }
                         className="form-check-input mt-1"
                     />
                     Fire
@@ -136,7 +147,10 @@ export default function Subir() {
                         value="water"
                         checked={checkboxValues.includes("water")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('water')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("water")
+                        }
                         className="form-check-input mt-1"
                     />
                     Water
@@ -149,7 +163,10 @@ export default function Subir() {
                         value="bug"
                         checked={checkboxValues.includes("bug")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('bug')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("bug")
+                        }
                         className="form-check-input mt-1"
                     />
                     Bug
@@ -162,7 +179,10 @@ export default function Subir() {
                         value="poison"
                         checked={checkboxValues.includes("poison")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('poison')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("poison")
+                        }
                         className="form-check-input mt-1"
                     />
                     Poison
@@ -175,7 +195,10 @@ export default function Subir() {
                         value="ghost"
                         checked={checkboxValues.includes("ghost")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('ghost')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("ghost")
+                        }
                         className="form-check-input mt-1"
                     />
                     Ghost
@@ -188,7 +211,10 @@ export default function Subir() {
                         value="rock"
                         checked={checkboxValues.includes("rock")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('rock')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("rock")
+                        }
                         className="form-check-input mt-1"
                     />
                     Rock
@@ -201,7 +227,10 @@ export default function Subir() {
                         value="ground"
                         checked={checkboxValues.includes("ground")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('ground')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("ground")
+                        }
                         className="form-check-input mt-1"
                     />
                     Ground
@@ -214,7 +243,10 @@ export default function Subir() {
                         value="electric"
                         checked={checkboxValues.includes("electric")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('electric')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("electric")
+                        }
                         className="form-check-input mt-1"
                     />
                     Electric
@@ -227,7 +259,10 @@ export default function Subir() {
                         value="psychic"
                         checked={checkboxValues.includes("psychic")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('psychic')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("psychic")
+                        }
                         className="form-check-input mt-1"
                     />
                     Psychic
@@ -240,7 +275,10 @@ export default function Subir() {
                         value="ice"
                         checked={checkboxValues.includes("ice")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('ice')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("ice")
+                        }
                         className="form-check-input mt-1"
                     />
                     Ice
@@ -253,7 +291,10 @@ export default function Subir() {
                         value="dragon"
                         checked={checkboxValues.includes("dragon")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('dragon')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("dragon")
+                        }
                         className="form-check-input mt-1"
                     />
                     Dragon
@@ -266,7 +307,10 @@ export default function Subir() {
                         value="dark"
                         checked={checkboxValues.includes("dark")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('dark')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("dark")
+                        }
                         className="form-check-input mt-1"
                     />
                     Dark
@@ -279,7 +323,10 @@ export default function Subir() {
                         value="fairy"
                         checked={checkboxValues.includes("fairy")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('fairy')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("fairy")
+                        }
                         className="form-check-input mt-1"
                     />
                     Fairy
@@ -292,7 +339,10 @@ export default function Subir() {
                         value="fighting"
                         checked={checkboxValues.includes("fighting")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('fighting')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("fighting")
+                        }
                         className="form-check-input mt-1"
                     />
                     Fighting
@@ -305,7 +355,10 @@ export default function Subir() {
                         value="flying"
                         checked={checkboxValues.includes("flying")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('flying')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("flying")
+                        }
                         className="form-check-input mt-1"
                     />
                     Flying
@@ -318,15 +371,26 @@ export default function Subir() {
                         value="steel"
                         checked={checkboxValues.includes("steel")}
                         onChange={handleCheckboxChange}
-                        disabled={checkboxValues.length >= 2 && !checkboxValues.includes('steel')}
+                        disabled={
+                            checkboxValues.length >= 2 &&
+                            !checkboxValues.includes("steel")
+                        }
                         className="form-check-input mt-1"
                     />
                     Steel
                 </label>
                 <br />
 
-                <button className="btn btn-success my-5" type="submit">Guardar</button>
+                <button className="btn btn-success my-2" type="submit">
+                    Guardar
+                </button>
             </form>
+            <button
+                className="btn btn-primary mb-4"
+                onClick={() => navigate(-1)}
+            >
+                Volver
+            </button>
         </div>
     );
 }
