@@ -1,6 +1,6 @@
 {
   "name": "react-pokedex",
-  "version": "6.0",
+  "version": "7.1",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^2.1.0",
